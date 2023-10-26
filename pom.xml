@@ -70,7 +70,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M5</version>
           <configuration>
-            <test>List.pending_batches_new.slidebatches</test>
+            <test>List.Pending_Batches.Batches_Test</test>
           </configuration>
         </plugin>
       </plugins>
