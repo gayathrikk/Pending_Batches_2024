@@ -29,8 +29,8 @@ public class Batches_Test {
 
         for (int i = 0; i < jp2Paths.length; i++) {
             int count = processQuery(connection, jp2Paths[i]);
-            System.out.println("Total Pending Batches of " + jp2Paths[i] + ": " + count);
-            
+            System.out.println("*****************************************************Total Pending Batches of " + jp2Paths[i] + ": " + count + "*****************************************************");
+ 
             // Add extra spaces between specific jp2Path values
             if (i < jp2Paths.length - 1) {
                 System.out.println(); // Add an empty line for spacing
@@ -43,7 +43,7 @@ public class Batches_Test {
 
     private int processQuery(Connection connection, String jp2Path) throws SQLException {
         Statement statement = connection.createStatement();
-        String query =  "SELECT " +
+        String query = "SELECT " +
                 "sb.id AS slidebatch_id, " +
                 "sb.name AS name, " +
                 "s.filename AS filename " +
@@ -54,13 +54,22 @@ public class Batches_Test {
         ResultSet resultSet = statement.executeQuery(query);
 
         Set<Integer> distinctBatchIds = new LinkedHashSet<>();
+        Integer lastId = null;  // Keep track of the last processed ID
 
         while (resultSet.next()) {
             Integer id = resultSet.getInt("slidebatch_id");
             String name = resultSet.getString("name");
             String filename = resultSet.getString("filename");
-            distinctBatchIds.add(id);
+
+            // Check if the current ID is different from the last one and insert a space
+            if (lastId != null && !id.equals(lastId)) {
+                System.out.println(); // Insert a space if not the first unique ID
+            }
+
             System.out.println("ID: " + id + ", Name: " + name + ", Filename: " + filename);
+
+            distinctBatchIds.add(id);
+            lastId = id;
         }
 
         // Close resources
@@ -69,4 +78,5 @@ public class Batches_Test {
 
         return distinctBatchIds.size();
     }
+
 }
