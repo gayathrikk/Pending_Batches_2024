@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-10-27T17:47:40 IST" name="Default suite" finished-at="2023-10-27T17:47:42 IST" duration-ms="1328">
+  <suite started-at="2023-10-27T17:58:30 IST" name="Default suite" finished-at="2023-10-27T17:58:31 IST" duration-ms="595">
     <groups>
     </groups>
-    <test started-at="2023-10-27T17:47:40 IST" name="Default test" finished-at="2023-10-27T17:47:42 IST" duration-ms="1328">
+    <test started-at="2023-10-27T17:58:30 IST" name="Default test" finished-at="2023-10-27T17:58:31 IST" duration-ms="595">
       <class name="List.Pending_Batches.Batches_Test">
-        <test-method signature="testDB()[pri:0, instance:List.Pending_Batches.Batches_Test@15aab8c6]" started-at="2023-10-27T17:47:40 IST" name="testDB" finished-at="2023-10-27T17:47:42 IST" duration-ms="1301" status="PASS">
+        <test-method signature="testDB()[pri:0, instance:List.Pending_Batches.Batches_Test@15aab8c6]" started-at="2023-10-27T17:58:30 IST" name="testDB" finished-at="2023-10-27T17:58:31 IST" duration-ms="568" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDB -->

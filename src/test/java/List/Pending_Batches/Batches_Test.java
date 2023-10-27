@@ -66,7 +66,7 @@ public class Batches_Test {
                 System.out.println(); // Insert a space if not the first unique ID
             }
 
-            System.out.println("ID: " + id + ", Name: " + name + ", Filename: " + filename);
+            System.out.println("ID: " + id + "----- Name: " + name + "--------- Filename: " + filename);
 
             distinctBatchIds.add(id);
             lastId = id;
