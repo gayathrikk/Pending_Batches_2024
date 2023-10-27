@@ -52,6 +52,11 @@
         <artifactId>rest-assured</artifactId>
         <version>4.4.0</version> <!-- Use the latest version -->
     </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.26</version> 
+    </dependency>
 
 </dependencies>
 

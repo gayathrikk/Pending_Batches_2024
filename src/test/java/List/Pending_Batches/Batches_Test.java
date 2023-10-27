@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 
 import org.testng.annotations.Test;
 
@@ -40,28 +43,30 @@ public class Batches_Test {
 
     private int processQuery(Connection connection, String jp2Path) throws SQLException {
         Statement statement = connection.createStatement();
-        String query = "SELECT id, name\n" +
-                "FROM HBA_V2.slidebatch\n" +
-                "WHERE id IN (\n" +
-                "SELECT slidebatch\n" +
-                "FROM HBA_V2.slide\n" +
-                "WHERE jp2Path LIKE '%" + jp2Path + "%'\n" +
-                ") and process_status = 8;";
+        String query =  "SELECT " +
+                "sb.id AS slidebatch_id, " +
+                "sb.name AS name, " +
+                "s.filename AS filename " +
+                "FROM slidebatch sb " +
+                "LEFT JOIN slide s ON sb.id = s.slidebatch " +
+                "WHERE sb.process_status = 8 " +
+                "AND s.jp2Path LIKE '%" + jp2Path + "%';";
         ResultSet resultSet = statement.executeQuery(query);
 
-        int count = 0;
+        Set<Integer> distinctBatchIds = new LinkedHashSet<>();
 
         while (resultSet.next()) {
-            String id = resultSet.getString("id");
+            Integer id = resultSet.getInt("slidebatch_id");
             String name = resultSet.getString("name");
-            System.out.println("id: " + id + ", name: " + name);
-            count++;
+            String filename = resultSet.getString("filename");
+            distinctBatchIds.add(id);
+            System.out.println("ID: " + id + ", Name: " + name + ", Filename: " + filename);
         }
 
         // Close resources
         resultSet.close();
         statement.close();
 
-        return count;
+        return distinctBatchIds.size();
     }
 }
