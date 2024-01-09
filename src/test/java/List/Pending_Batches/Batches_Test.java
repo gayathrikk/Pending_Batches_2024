@@ -25,7 +25,7 @@ public class Batches_Test {
         System.out.println("MYSQL database connect");
 
         // Define an array of jp2Path values to loop through
-        String[] jp2Paths = {"pp1", "pp2", "pp3", "pp4", "pp5", "pp7", "pre5"};
+        String[] jp2Paths = {"pp1", "pp2", "pp3", "pp4", "pp5", "pp7", "pre5" ,"pre4" ,"pre7"};
 
         for (int i = 0; i < jp2Paths.length; i++) {
             int count = processQuery(connection, jp2Paths[i]);
