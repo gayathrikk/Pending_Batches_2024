@@ -75,7 +75,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.0.0-M5</version>
           <configuration>
-            <test>List.Pending_Batches.Batches_Test</test>
+            <test>List.Pending_Batches.Pending_Batches_2024</test>
           </configuration>
         </plugin>
       </plugins>
